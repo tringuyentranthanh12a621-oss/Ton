@@ -1,0 +1,83 @@
+/* --- CẤU HÌNH ẨN THANH SCROLL (NHƯNG VẪN CUỘN ĐƯỢC) --- */
+
+/* 1. Cho Chrome, Safari, Opera, Edge */
+html {
+    /* Ẩn scrollbar trên Firefox */
+    scrollbar-width: none;
+    /* Ẩn scrollbar trên IE/Edge cũ */
+    -ms-overflow-style: none;
+}
+
+body {
+    font-family: 'Space Grotesk', sans-serif;
+    /* Ẩn scrollbar trên Firefox (dự phòng) */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+/* Ẩn scrollbar trên Chrome, Safari, Edge, Opera */
+::-webkit-scrollbar {
+    display: none;
+}
+
+/* ----------------------------------------- */
+
+/* Glass Navbar Effect */
+.glass-nav {
+    background: rgba(18, 18, 18, 0.95);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Button Shine Effect */
+.btn-shine {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-shine::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transform: skewX(-25deg);
+    animation: shine-pass 3s infinite;
+}
+
+@keyframes shine-pass {
+    0% {
+        left: -100%;
+    }
+
+    20% {
+        left: 200%;
+    }
+
+    100% {
+        left: 200%;
+    }
+}
+
+/* --- MOBILE MENU STYLES --- */
+.ease-out-quart {
+    transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.mobile-link {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.menu-open .mobile-link {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#mobile-menu {
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
